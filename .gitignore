@@ -9,5 +9,8 @@ __pycache__/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Data files
+# ignore raw data
 data/
+
+# but don’t ignore our processed cities file
+!data/world_cities_updated.csv
