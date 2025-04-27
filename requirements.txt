@@ -6,3 +6,6 @@ plotly
 scikit-learn
 hdbscan
 streamlit
+
+streamlit
+streamlit-folium
