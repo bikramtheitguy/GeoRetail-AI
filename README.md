@@ -38,3 +38,16 @@ GeoRetail-AI/
 ├── requirements.txt 
 └── .gitignore       
 ```
+
+
+## 📊 Visualizations
+
+### Top 10 Expansion Map  
+*Predicted retail expansion hotspots based on economic viability and competitive intensity.*  
+
+![Top 10 Expansion Map](visuals/top10_expansion_map.png)
+
+### Expansion Score Bar Chart  
+*Comparison of expansion scores (econ_viability × (1 – comp_intensity)) for the top 10 markets.*  
+
+![Expansion Score Bar Chart](visuals/expansion_score_bar.png)
