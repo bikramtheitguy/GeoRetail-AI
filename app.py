@@ -5,90 +5,102 @@ from streamlit_folium import st_folium
 import matplotlib.pyplot as plt
 import geonamescache
 
-# ── 0. Page config ─────────────────────────────────────────────────────────────
+# ── 0. Page configuration ───────────────────────────────────────────────────────
 st.set_page_config(
     page_title="GeoRetail AI Dashboard",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# ── 1. Cached loaders ───────────────────────────────────────────────────────────
+# ── 1. Cached data loaders ─────────────────────────────────────────────────────
 @st.cache_data
 def load_city_data(path="data/cities_final_ranked.csv"):
-    df = pd.read_csv(path)
-    return df
+    return pd.read_csv(path)
 
 @st.cache_data
 def load_country_meta():
     gc = geonamescache.GeonamesCache()
-    countries = pd.DataFrame(gc.get_countries()).T.reset_index().rename(
-        columns={"index":"iso2"}
+    countries = (
+        pd.DataFrame(gc.get_countries())
+          .T
+          .reset_index()
+          .rename(columns={"index": "iso2"})
     )
-    # countries has iso2, iso3, country, continentcode, etc.
-    return countries[["iso2","continentcode"]]
+    return countries[["iso2", "continentcode"]]
 
 @st.cache_data
 def build_cont_map():
     gc    = geonamescache.GeonamesCache()
-    conts = gc.get_continents()  # {'AF':{'code':'AF','name':'Africa'}, …}
-    return {code: info.get("name","") for code, info in conts.items()}
+    conts = gc.get_continents()
+    # Map codes → human-readable names
+    return {code: info.get("name", "") for code, info in conts.items()}
 
-# ── 2. Load & enrich data ───────────────────────────────────────────────────────
+# ── 2. Load & enrich ────────────────────────────────────────────────────────────
 df = load_city_data()
-countries = load_country_meta()
+country_meta = load_country_meta()
+cont_map     = build_cont_map()
 
-# Merge in the 2-letter continent code
+# Merge in continent codes
 df = df.merge(
-    countries,
+    country_meta,
     left_on="countrycode",
     right_on="iso2",
     how="left"
 )
 
-# Build human-readable continent names
-cont_map = build_cont_map()
+# Human-readable continent column
 df["continent"] = df["continentcode"].map(cont_map)
 
-# ── 3. Sidebar filters ─────────────────────────────────────────────────────────
+# ── 3. Sidebar filters ──────────────────────────────────────────────────────────
 st.sidebar.header("🔍 Filter Markets")
 
-regions = sorted(df["continent"].dropna().unique())
+# 3a. Hard-coded continent order
+continents_order = [
+    "Asia", "Africa", "Europe", "North America",
+    "South America", "Australia", "Antarctica"
+]
+available = [c for c in continents_order if c in df["continent"].unique()]
 sel_regions = st.sidebar.multiselect(
     "Region (Continent)",
-    options=regions,
-    default=regions
+    options=available,
+    default=available
 )
 
-gdp_min, gdp_max = float(df["gdp_per_capita"].min()), float(df["gdp_per_capita"].max())
+# 3b. GDP per Capita slider
+gdp_min, gdp_max = float(df.gdp_per_capita.min()), float(df.gdp_per_capita.max())
 gdp_lo, gdp_hi = st.sidebar.slider(
     "GDP per Capita",
-    min_value=gdp_min, max_value=gdp_max,
+    min_value=gdp_min,
+    max_value=gdp_max,
     value=(gdp_min, gdp_max),
-    step=(gdp_max-gdp_min)/100
+    step=(gdp_max - gdp_min) / 100
 )
 
-store_max = int(df["store_count"].max())
-store_lo, store_hi = st.sidebar.slider(
+# 3c. Existing store-count slider
+store_max = int(df.store_count.max())
+store_range = st.sidebar.slider(
     "Existing Store Count",
-    min_value=0, max_value=store_max,
+    min_value=0,
+    max_value=store_max,
     value=(0, store_max),
     step=1
 )
+store_lo, store_hi = store_range
 
-# ── 4. Apply filters & select top 10 ────────────────────────────────────────────
+# ── 4. Apply filters & pick top 10 ──────────────────────────────────────────────
 filtered = df.query(
     "continent in @sel_regions and "
     "@gdp_lo <= gdp_per_capita <= @gdp_hi and "
     "@store_lo <= store_count <= @store_hi"
 )
-
 top10 = filtered.nlargest(10, "expansion_score")
 
-# ── 5. Main layout ──────────────────────────────────────────────────────────────
+# ── 5. Main page layout ─────────────────────────────────────────────────────────
 st.title("GeoRetail AI: Retail Expansion Hotspots")
 
-col_map, col_chart = st.columns((2,1))
+col_map, col_chart = st.columns((2, 1))
 
+# — Map Column —
 with col_map:
     st.header("Top 10 Expansion Cities Map")
     if top10.empty:
@@ -105,7 +117,7 @@ with col_map:
                 radius=6 + city.expansion_score * 50,
                 popup=(
                     f"{city.name} ({city.countrycode})\n"
-                    f"Econ: {city.econ_viability:.3f}\n"
+                    f"Econ Viability: {city.econ_viability:.3f}\n"
                     f"Stores: {city.store_count}\n"
                     f"Score: {city.expansion_score:.3f}"
                 ),
@@ -115,12 +127,13 @@ with col_map:
             ).add_to(m)
         st_folium(m, width="100%", height=450)
 
+# — Chart Column —
 with col_chart:
     st.header("Expansion Score Comparison")
     if top10.empty:
         st.info("No data to display.")
     else:
-        fig, ax = plt.subplots(figsize=(5,4))
+        fig, ax = plt.subplots(figsize=(5, 4))
         scores = top10.set_index("name")["expansion_score"] * 100
         bars = ax.bar(scores.index, scores.values, width=0.6)
         ax.set_ylabel("Expansion Score (%)")
@@ -128,11 +141,9 @@ with col_chart:
         plt.xticks(rotation=45, ha="right")
         for bar in bars:
             ax.text(
-                bar.get_x() + bar.get_width()/2,
+                bar.get_x() + bar.get_width() / 2,
                 bar.get_height(),
                 f"{bar.get_height():.2f}%",
-                ha="center",
-                va="bottom",
-                fontsize=9
+                ha="center", va="bottom", fontsize=9
             )
         st.pyplot(fig)
