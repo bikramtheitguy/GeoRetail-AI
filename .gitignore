@@ -16,3 +16,4 @@ data/*
 !data/world_cities_updated.csv
 !data/cities_with_econ.csv
 !data/cities_final_ranked.csv
+!data/store_locations.csv

@@ -1,0 +1,16 @@
+store_id,latitude,longitude,city_name
+1,19.0760,72.8777       # Mumbai, India
+2,28.7041,77.1025       # Delhi, India
+3,12.9716,77.5946       # Bengaluru, India
+4,13.0827,80.2707       # Chennai, India
+5,22.5726,88.3639       # Kolkata, India
+6,17.3850,78.4867       # Hyderabad, India
+7,40.7128,-74.0060      # New York, USA
+8,34.0522,-118.2437     # Los Angeles, USA
+9,51.5074,-0.1278       # London, UK
+10,35.6895,139.6917     # Tokyo, Japan
+11,-33.8688,151.2093    # Sydney, Australia
+12,48.8566,2.3522       # Paris, France
+13,25.2048,55.2708      # Dubai, UAE
+14,1.3521,103.8198      # Singapore
+15,23.5505,46.6333      # São Paulo, Brazil
