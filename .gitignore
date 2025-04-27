@@ -15,3 +15,4 @@ data/*
 # …except our two processed CSVs
 !data/world_cities_updated.csv
 !data/cities_with_econ.csv
+!data/cities_final_ranked.csv
