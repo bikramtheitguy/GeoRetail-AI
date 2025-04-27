@@ -1,0 +1,8 @@
+pandas
+numpy
+geopandas
+folium
+plotly
+scikit-learn
+hdbscan
+streamlit
