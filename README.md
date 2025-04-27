@@ -1,3 +1,5 @@
+![GeoRetail AI Banner](visuals/geo-retail-ai-banner.png)
+
 # GeoRetail AI: Predicting Top Cities for Retail Expansion Using Geospatial and Economic Data
 
 ## 1. Project Overview
@@ -51,3 +53,9 @@ GeoRetail-AI/
 *Comparison of expansion scores (econ_viability × (1 – comp_intensity)) for the top 10 markets.*  
 
 ![Expansion Score Bar Chart](visuals/expansion_score_bar.png)
+
+
+## Kaggle Notebook
+
+Explore the end-to-end GeoRetail AI pipeline on Kaggle:  
+🔗 [GeoRetail AI: Predicting Retail Expansion Hotspots](https://www.kaggle.com/code/bikramtheitguy/geo-retail-ai)
