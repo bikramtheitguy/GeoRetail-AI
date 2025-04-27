@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f7e26bf43e359563ddc691bf32221964 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f7e26bf43e359563ddc691bf32221964" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f7e26bf43e359563ddc691bf32221964 = L.map(
+                "map_f7e26bf43e359563ddc691bf32221964",
+                {
+                    center: [20.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cd3353fac659798664bc1deb89341168 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cd3353fac659798664bc1deb89341168.addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+            var circle_marker_3bc7fb5c84e3c556166706cf4c2ffc41 = L.circleMarker(
+                [43.73718, 7.42145],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_7a2ef3898bbdec3df531c5991b786914 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6aaa069704539ca1dc262a65d20ccab9 = $(`<div id="html_6aaa069704539ca1dc262a65d20ccab9" style="width: 100.0%; height: 100.0%;">Monaco (MC)<br>Econ Viability: 0.61<br>Competition: 0.00<br>Score: 0.61</div>`)[0];
+                popup_7a2ef3898bbdec3df531c5991b786914.setContent(html_6aaa069704539ca1dc262a65d20ccab9);
+            
+        
+
+        circle_marker_3bc7fb5c84e3c556166706cf4c2ffc41.bindPopup(popup_7a2ef3898bbdec3df531c5991b786914)
+        ;
+
+        
+    
+    
+            var circle_marker_bbfb4a57ec75b7e9fb6131dace98344b = L.circleMarker(
+                [43.73976, 7.42732],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_55f97e6c024b7c3de392f558c34057a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_db5161b042a90fed24415ecf5cab6cb3 = $(`<div id="html_db5161b042a90fed24415ecf5cab6cb3" style="width: 100.0%; height: 100.0%;">Monte-Carlo (MC)<br>Econ Viability: 0.57<br>Competition: 0.00<br>Score: 0.57</div>`)[0];
+                popup_55f97e6c024b7c3de392f558c34057a0.setContent(html_db5161b042a90fed24415ecf5cab6cb3);
+            
+        
+
+        circle_marker_bbfb4a57ec75b7e9fb6131dace98344b.bindPopup(popup_55f97e6c024b7c3de392f558c34057a0)
+        ;
+
+        
+    
+    
+            var circle_marker_5b8ed4679e619d1a60953653d81d40d4 = L.circleMarker(
+                [47.14151, 9.52154],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_7c6e0ffaa53bbcba7364c610693c71cb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3cc77598c97177cecc23e91c9b23ff45 = $(`<div id="html_3cc77598c97177cecc23e91c9b23ff45" style="width: 100.0%; height: 100.0%;">Vaduz (LI)<br>Econ Viability: 0.42<br>Competition: 0.00<br>Score: 0.42</div>`)[0];
+                popup_7c6e0ffaa53bbcba7364c610693c71cb.setContent(html_3cc77598c97177cecc23e91c9b23ff45);
+            
+        
+
+        circle_marker_5b8ed4679e619d1a60953653d81d40d4.bindPopup(popup_7c6e0ffaa53bbcba7364c610693c71cb)
+        ;
+
+        
+    
+    
+            var circle_marker_93a2ec42d46de3013a750a823bf0e8a5 = L.circleMarker(
+                [53.33306, -6.24889],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_2f1b5feb17f3c394c76a0ade1476074b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5a9281575db8e29aa34d780b3d415b80 = $(`<div id="html_5a9281575db8e29aa34d780b3d415b80" style="width: 100.0%; height: 100.0%;">Dublin (IE)<br>Econ Viability: 0.38<br>Competition: 0.00<br>Score: 0.38</div>`)[0];
+                popup_2f1b5feb17f3c394c76a0ade1476074b.setContent(html_5a9281575db8e29aa34d780b3d415b80);
+            
+        
+
+        circle_marker_93a2ec42d46de3013a750a823bf0e8a5.bindPopup(popup_2f1b5feb17f3c394c76a0ade1476074b)
+        ;
+
+        
+    
+    
+            var circle_marker_1346e6d6236431cb55ea7cd2e279998c = L.circleMarker(
+                [59.91273, 10.74609],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_64267df6e210e078174da4ee1a79c67d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_409dc00227da7d8a4d0830cc5986047a = $(`<div id="html_409dc00227da7d8a4d0830cc5986047a" style="width: 100.0%; height: 100.0%;">Oslo (NO)<br>Econ Viability: 0.38<br>Competition: 0.00<br>Score: 0.38</div>`)[0];
+                popup_64267df6e210e078174da4ee1a79c67d.setContent(html_409dc00227da7d8a4d0830cc5986047a);
+            
+        
+
+        circle_marker_1346e6d6236431cb55ea7cd2e279998c.bindPopup(popup_64267df6e210e078174da4ee1a79c67d)
+        ;
+
+        
+    
+    
+            var circle_marker_6f9dbbd3507c2aec8cbb521fcdc1f656 = L.circleMarker(
+                [49.61167, 6.13],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_bb6d3422d0d5df6d87c114b06252c331 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c19c2763cc0b2d01da4a8e480c5b075 = $(`<div id="html_7c19c2763cc0b2d01da4a8e480c5b075" style="width: 100.0%; height: 100.0%;">Luxembourg (LU)<br>Econ Viability: 0.37<br>Competition: 0.00<br>Score: 0.37</div>`)[0];
+                popup_bb6d3422d0d5df6d87c114b06252c331.setContent(html_7c19c2763cc0b2d01da4a8e480c5b075);
+            
+        
+
+        circle_marker_6f9dbbd3507c2aec8cbb521fcdc1f656.bindPopup(popup_bb6d3422d0d5df6d87c114b06252c331)
+        ;
+
+        
+    
+    
+            var circle_marker_90043367b3cbc5db3478965f7a9b5f55 = L.circleMarker(
+                [1.28967, 103.85007],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_b17a6aa2feca0ee30424321b26f21515 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_08c1224c36f24259c204ca7ef72f3481 = $(`<div id="html_08c1224c36f24259c204ca7ef72f3481" style="width: 100.0%; height: 100.0%;">Singapore (SG)<br>Econ Viability: 0.36<br>Competition: 0.00<br>Score: 0.36</div>`)[0];
+                popup_b17a6aa2feca0ee30424321b26f21515.setContent(html_08c1224c36f24259c204ca7ef72f3481);
+            
+        
+
+        circle_marker_90043367b3cbc5db3478965f7a9b5f55.bindPopup(popup_b17a6aa2feca0ee30424321b26f21515)
+        ;
+
+        
+    
+    
+            var circle_marker_28e3de1445a22551ddcf8518c84add77 = L.circleMarker(
+                [60.39299, 5.32415],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_4aa94e0115350c23155a83de6501e94e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6311502727daf256b519f242a9379b48 = $(`<div id="html_6311502727daf256b519f242a9379b48" style="width: 100.0%; height: 100.0%;">Bergen (NO)<br>Econ Viability: 0.36<br>Competition: 0.00<br>Score: 0.36</div>`)[0];
+                popup_4aa94e0115350c23155a83de6501e94e.setContent(html_6311502727daf256b519f242a9379b48);
+            
+        
+
+        circle_marker_28e3de1445a22551ddcf8518c84add77.bindPopup(popup_4aa94e0115350c23155a83de6501e94e)
+        ;
+
+        
+    
+    
+            var circle_marker_78751a94574593424680813b3fdd6ca6 = L.circleMarker(
+                [53.29026, -6.34151],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_4c30329c8a2149a924f81009e192122c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9f9021cb2bc344e23a09c344741b9d58 = $(`<div id="html_9f9021cb2bc344e23a09c344741b9d58" style="width: 100.0%; height: 100.0%;">South Dublin (IE)<br>Econ Viability: 0.35<br>Competition: 0.00<br>Score: 0.35</div>`)[0];
+                popup_4c30329c8a2149a924f81009e192122c.setContent(html_9f9021cb2bc344e23a09c344741b9d58);
+            
+        
+
+        circle_marker_78751a94574593424680813b3fdd6ca6.bindPopup(popup_4c30329c8a2149a924f81009e192122c)
+        ;
+
+        
+    
+    
+            var circle_marker_367e7c8a463790ff0fccac5d7f2d757b = L.circleMarker(
+                [63.43049, 10.39506],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+    
+        var popup_8d4024a579d18a182861e3c954ea48b5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_388426d84d7b180d048c45616a813880 = $(`<div id="html_388426d84d7b180d048c45616a813880" style="width: 100.0%; height: 100.0%;">Trondheim (NO)<br>Econ Viability: 0.34<br>Competition: 0.00<br>Score: 0.34</div>`)[0];
+                popup_8d4024a579d18a182861e3c954ea48b5.setContent(html_388426d84d7b180d048c45616a813880);
+            
+        
+
+        circle_marker_367e7c8a463790ff0fccac5d7f2d757b.bindPopup(popup_8d4024a579d18a182861e3c954ea48b5)
+        ;
+
+        
+    
+    
+            tile_layer_cd3353fac659798664bc1deb89341168.addTo(map_f7e26bf43e359563ddc691bf32221964);
+        
+</script>
+</html>
