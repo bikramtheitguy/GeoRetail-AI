@@ -3,10 +3,40 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 import matplotlib.pyplot as plt
+import geonamescache
 
-# 1. Load data
-df   = pd.read_csv("data/cities_final_ranked.csv")
-top10 = df.sort_values("expansion_score", ascending=False).head(10)
+# 1) Load data
+df = pd.read_csv("data/cities_final_ranked.csv")
+
+# 2) Enrich with continentcode → continent name
+gc = geonamescache.GeonamesCache()
+conts = gc.get_continents()
+cont_map = { info['code']: info['name'] for info in conts.values() }
+df = df.merge(
+    pd.DataFrame(gc.get_countries()).T[['iso','continentcode']],
+    left_on='countrycode', right_on='iso', how='left'
+)
+df['continent'] = df['continentcode'].map(cont_map)
+
+# 3) Sidebar filters
+st.sidebar.header("🔍 Filter Markets")
+all_regions = sorted(df['continent'].dropna().unique())
+sel_regions = st.sidebar.multiselect("Region (Continent)", all_regions, all_regions)
+
+min_gdp, max_gdp = float(df.gdp_per_capita.min()), float(df.gdp_per_capita.max())
+gdp_lo, gdp_hi = st.sidebar.slider("GDP per Capita", min_gdp, max_gdp, (min_gdp, max_gdp))
+max_stores = int(df.store_count.max())
+store_lo, store_hi = st.sidebar.slider("Existing Stores", 0, max_stores, (0, max_stores))
+
+# 4) Apply filters
+filtered = df[
+    (df['continent'].isin(sel_regions)) &
+    (df['gdp_per_capita'].between(gdp_lo, gdp_hi)) &
+    (df['store_count'].between(store_lo, store_hi))
+]
+
+top10 = filtered.sort_values("expansion_score", ascending=False).head(10)
+# ... rest of your two‐column map/chart code ...
 
 # 2. Page config
 st.set_page_config(page_title="GeoRetail AI Dashboard", layout="wide")
